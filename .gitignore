@@ -1,0 +1,31 @@
+# Root .gitignore for the whole monorepo.
+# The backend and frontend keep their own as well; this covers what Vercel and
+# the root package.json add.
+
+node_modules/
+
+# Never commit real secrets. Only the .example files are committed.
+.env
+.env.local
+.env.*.local
+
+# Google/Facebook OAuth client secret files downloaded from their consoles.
+oauth_json/
+client_secret_*.json
+
+# Vercel CLI working directory - contains your project and org IDs.
+.vercel/
+
+# Build output
+dist/
+build/
+.vite/
+
+logs/
+*.log
+npm-debug.log*
+
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

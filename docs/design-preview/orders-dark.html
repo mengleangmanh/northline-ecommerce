@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>My orders — Northline</title>
+<link rel="stylesheet" href="index.css" />
+</head>
+<body>
+<div class="app">
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo">Northline</a>
+    <form class="nav-search" role="search">
+      <input type="search" placeholder="Search products" />
+      <button type="submit" class="btn btn-sm">Search</button>
+    </form>
+    <nav class="nav-links">
+      <a href="#">Shop</a>
+      <a href="#">Admin</a>
+      <a href="#" class="nav-cart">Cart</a>
+      <button type="button" class="theme-toggle" aria-label="Dark mode">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.6A8.6 8.6 0 1 1 9.4 3.5a6.9 6.9 0 0 0 11.1 11.1z"/></svg>
+      </button>
+      <div class="account">
+        <button class="account-trigger"><span class="avatar">S</span><span class="account-name">Store</span></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="app-body">
+<div class="container section">
+  <h1>My orders</h1>
+
+  <article class="order-card">
+    <header class="order-head">
+      <div>
+        <strong>NL-2026LTZ5BL</strong>
+        <span class="muted-xs"> placed 7/8/2026</span>
+      </div>
+      <span class="badge badge-orange">PENDING</span>
+    </header>
+
+    <ul class="order-items">
+      <li>
+        <img src="mountain.jpg" alt="" />
+        <span class="order-item-name">Alpine Ridge Print<span class="muted-xxs"> x1</span></span>
+        <span>$129.00</span>
+      </li>
+      <li>
+        <div class="cart-thumb-empty"></div>
+        <span class="order-item-name">Wireless Headphones<span class="muted-xxs"> x2</span></span>
+        <span>$179.98</span>
+      </li>
+      <li>
+        <div class="cart-thumb-empty"></div>
+        <span class="order-item-name">Heavyweight Cotton T-Shirt in a deliberately very long product name to test truncation<span class="muted-xxs"> x1</span></span>
+        <span>$19.99</span>
+      </li>
+    </ul>
+
+    <div class="order-foot">
+      <div class="order-address">
+        <span class="muted-xs">Shipping to</span>
+        <span>Mengleang Manh, 12 Street 271, Phnom Penh 12000, Cambodia</span>
+      </div>
+
+      <dl class="order-totals">
+        <div><dt>Subtotal</dt><dd>$328.97</dd></div>
+        <div><dt>Shipping</dt><dd>Free</dd></div>
+        <div><dt>Tax</dt><dd>$32.90</dd></div>
+        <div class="total"><dt>Total</dt><dd>$361.87</dd></div>
+      </dl>
+    </div>
+
+    <button type="button" class="link-danger">Cancel this order</button>
+  </article>
+
+  <article class="order-card">
+    <header class="order-head">
+      <div>
+        <strong>NL-2026KQ81MM</strong>
+        <span class="muted-xs"> placed 2/8/2026</span>
+      </div>
+      <span class="badge badge-green">DELIVERED</span>
+    </header>
+
+    <ul class="order-items">
+      <li>
+        <div class="cart-thumb-empty"></div>
+        <span class="order-item-name">Solid Oak Monitor Riser<span class="muted-xxs"> x1</span></span>
+        <span>$64.50</span>
+      </li>
+    </ul>
+
+    <div class="order-foot">
+      <div class="order-address">
+        <span class="muted-xs">Shipping to</span>
+        <span>Mengleang Manh, 12 Street 271, Phnom Penh 12000, Cambodia</span>
+      </div>
+      <dl class="order-totals">
+        <div><dt>Subtotal</dt><dd>$64.50</dd></div>
+        <div><dt>Shipping</dt><dd>$5.00</dd></div>
+        <div><dt>Tax</dt><dd>$6.45</dd></div>
+        <div class="total"><dt>Total</dt><dd>$75.95</dd></div>
+      </dl>
+    </div>
+  </article>
+
+  <div class="confirm-actions">
+    <a href="#" class="btn">Keep shopping</a>
+  </div>
+</div>
+</div>
+</div>
+</body>
+</html>

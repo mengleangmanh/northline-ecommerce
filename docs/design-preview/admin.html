@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Admin — Northline</title>
+<link rel="stylesheet" href="index.css" />
+</head>
+<body>
+<div class="app">
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo">Northline</a>
+    <form class="nav-search" role="search">
+      <input type="search" placeholder="Search products" />
+      <button type="submit" class="btn btn-sm">Search</button>
+    </form>
+    <nav class="nav-links">
+      <a href="#">Shop</a>
+      <a href="#" class="active">Admin</a>
+      <a href="#" class="nav-cart">Cart</a>
+      <div class="account"><button type="button" class="account-trigger"><span class="avatar">M</span><span class="account-name">Mengleang</span></button></div>
+    </nav>
+  </div>
+</header>
+
+<div class="app-body">
+<div class="admin">
+
+  <aside class="admin-nav">
+    <div class="admin-brand">Administration</div>
+    <a href="#" class="active">Dashboard</a>
+    <a href="#">Products</a>
+    <a href="#">Orders</a>
+    <a href="#">Categories</a>
+    <div class="admin-foot"><span class="muted-xxs">Signed in as admin</span></div>
+  </aside>
+
+  <main class="admin-main">
+    <div class="panel-head"><h2>Dashboard</h2><button class="btn btn-sm btn-ghost">Export CSV</button></div>
+
+    <div class="stat-grid">
+      <div class="stat"><span class="muted-xs">Revenue</span><strong>$12,480</strong><span class="muted-xxs">Cancelled orders excluded</span></div>
+      <div class="stat"><span class="muted-xs">Orders</span><strong>184</strong><span class="muted-xxs">12 awaiting payment</span></div>
+      <div class="stat"><span class="muted-xs">Products</span><strong>42</strong><span class="muted-xxs">3 low on stock</span></div>
+      <div class="stat"><span class="muted-xs">Customers</span><strong>96</strong><span class="muted-xxs">8 with 2FA enabled</span></div>
+    </div>
+
+    <div class="note note-orange">Three products are down to their last few units. Restock before the weekend.</div>
+
+    <div class="panel-head"><h3>Recent orders</h3><a href="#">View all</a></div>
+
+    <table class="dtable">
+      <thead>
+        <tr><th>Order</th><th>Customer</th><th>Status</th><th>Placed</th><th class="total">Total</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>NL-10000184</strong></td><td>Sophea Chan</td><td><span class="badge badge-green" style="position:static">Paid</span></td><td>7 Aug 2026</td><td class="total">$189.98</td></tr>
+        <tr><td><strong>NL-10000183</strong></td><td>Dara Pich</td><td><span class="badge badge-orange" style="position:static">Pending</span></td><td>7 Aug 2026</td><td class="total">$64.50</td></tr>
+        <tr><td><strong>NL-10000182</strong></td><td>Vichea Sok</td><td><span class="badge badge-grey" style="position:static">Shipped</span></td><td>6 Aug 2026</td><td class="total">$1,240.00</td></tr>
+        <tr><td><strong>NL-10000181</strong></td><td>Bopha Ly</td><td><span class="badge badge-red" style="position:static">Cancelled</span></td><td>6 Aug 2026</td><td class="total">$19.99</td></tr>
+        <tr><td><strong>NL-10000180</strong></td><td>Rithy Nou</td><td><span class="badge badge-green" style="position:static">Delivered</span></td><td>5 Aug 2026</td><td class="total">$310.25</td></tr>
+      </tbody>
+    </table>
+  </main>
+
+</div>
+</div>
+</div>
+</body>
+</html>
