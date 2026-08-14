@@ -136,6 +136,9 @@ export default function Navbar() {
                     <span className="muted-xs">{user.email}</span>
                   </div>
 
+                  <Link to="/account" role="menuitem" onClick={() => setAccountOpen(false)}>
+                    Account settings
+                  </Link>
                   <Link to="/orders" role="menuitem" onClick={() => setAccountOpen(false)}>
                     My orders
                   </Link>

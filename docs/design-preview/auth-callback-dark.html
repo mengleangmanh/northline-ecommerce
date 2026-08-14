@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Two-step verification — Northline</title>
+<link rel="stylesheet" href="index.css" />
+</head>
+<body>
+<div class="app">
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo">Northline</a>
+    <form class="nav-search" role="search">
+      <input type="search" placeholder="Search products" />
+      <button type="submit" class="btn btn-sm">Search</button>
+    </form>
+    <nav class="nav-links">
+      <a href="#">Shop</a>
+      <a href="#" class="nav-cart">Cart</a>
+      <a href="#" class="active">Sign in</a>
+      <a href="#" class="btn btn-sm">Create account</a>
+    </nav>
+  </div>
+</header>
+
+<div class="app-body">
+<div class="container">
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <h1>Two-step verification</h1>
+      <p class="muted">Almost there. Enter the six-digit code from your authenticator app to finish signing in.</p>
+
+      <form>
+        <div>
+          <label for="code">Authentication code</label>
+          <input id="code" type="text" inputmode="numeric" placeholder="000000"
+                 style="letter-spacing:0.45em;text-align:center;font-size:1.35rem;font-weight:640" />
+        </div>
+
+        <button type="submit" class="btn btn-block">Verify</button>
+      </form>
+
+      <div class="social-divider">or</div>
+
+      <div class="social-auth">
+        <button class="btn">I do not have my phone</button>
+      </div>
+
+      <div class="demo-box">
+        Codes rotate every 30 seconds. A code that has already been used will be refused even while it is still
+        inside its window.
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+</body>
+</html>

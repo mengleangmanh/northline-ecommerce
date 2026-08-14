@@ -94,7 +94,9 @@ export function isEncrypted(value) {
 export function decrypt(stored) {
   if (!isEncrypted(stored)) return stored
 
-  const [, ivB64, tagB64, dataB64] = stored.split(':')
+  const prefix = `${PREFIX}:`
+  const withoutPrefix = stored.slice(prefix.length)
+  const [ivB64, tagB64, dataB64] = withoutPrefix.split(':')
 
   try {
     const decipher = crypto.createDecipheriv(

@@ -13,6 +13,7 @@ import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
 import AuthCallback from './pages/AuthCallback.jsx'
 import OrderConfirmation from './pages/OrderConfirmation.jsx'
+import Account from './pages/Account.jsx'
 
 import AdminDashboard, { AdminLayout } from './pages/admin/AdminDashboard.jsx'
 import AdminProducts from './pages/admin/AdminProducts.jsx'
@@ -54,6 +55,7 @@ export default function App() {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/orders" element={<OrderConfirmation list />} />
             <Route path="/order/:number" element={<OrderConfirmation />} />
+            <Route path="/account" element={<Account />} />
           </Route>
 
           {/* Admin only. The API checks the role again on every request. */}
