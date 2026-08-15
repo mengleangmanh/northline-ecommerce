@@ -30,16 +30,16 @@ nothing to configure.
 
 These edits are in the repository. You do not need to make them.
 
-| File | Change | Why |
-| --- | --- | --- |
-| `package.json` (new, root) | Backend dependencies + `vercel-build` script | Vercel installs only the **root** manifest for the function |
-| `api/index.js` (new) | Imports the Express app, `export default app` | The serverless entry point |
-| `vercel.json` (new) | Build command, output directory, rewrites | Declares one static site plus one function |
-| `.gitignore` (new, root) | Ignores `.env`, `.vercel/`, `dist/` | Keeps secrets and build output out of git |
-| `.env.vercel.example` (new) | Every variable you must set, annotated | A checklist for the dashboard |
-| `database/06-create-app-user.sql` (new) | A non-root database user | `server.js` refuses to run as root in production |
-| `ecommerce-backend/server.js` | `listen()` and `sync()` gated on `!VERCEL`; lazy DB connect; health check reports DB state | A function has no startup phase |
-| `ecommerce-backend/config/db.js` | Pool max 2 on serverless, cached on `globalThis`, no `process.exit` | Prevents connection exhaustion |
+| File                                    | Change                                                                                     | Why                                                         |
+| --------------------------------------- | ------------------------------------------------------------------------------------------ | ----------------------------------------------------------- |
+| `package.json` (new, root)              | Backend dependencies + `vercel-build` script                                               | Vercel installs only the **root** manifest for the function |
+| `api/index.js` (new)                    | Imports the Express app, `export default app`                                              | The serverless entry point                                  |
+| `vercel.json` (new)                     | Build command, output directory, rewrites                                                  | Declares one static site plus one function                  |
+| `.gitignore` (new, root)                | Ignores `.env`, `.vercel/`, `dist/`                                                        | Keeps secrets and build output out of git                   |
+| `.env.vercel.example` (new)             | Every variable you must set, annotated                                                     | A checklist for the dashboard                               |
+| `database/06-create-app-user.sql` (new) | A non-root database user                                                                   | `server.js` refuses to run as root in production            |
+| `ecommerce-backend/server.js`           | `listen()` and `sync()` gated on `!VERCEL`; lazy DB connect; health check reports DB state | A function has no startup phase                             |
+| `ecommerce-backend/config/db.js`        | Pool max 2 on serverless, cached on `globalThis`, no `process.exit`                        | Prevents connection exhaustion                              |
 
 Nothing was changed for local development. `npm run dev` in each folder behaves
 exactly as before, because every new branch is behind `process.env.VERCEL`,
@@ -61,21 +61,21 @@ necessary.
 ## Step 1 - The database on Railway
 
 1. Create a MySQL service on Railway. Wait for the status to read **Active**;
-   while it says *Deploying*, the connection details are not final.
+   while it says _Deploying_, the connection details are not final.
 2. **Settings -> Networking -> enable public networking.** Vercel sits outside
    Railway's private network, so the internal hostname is unreachable. You get a
    proxy host and a port - **the port is not 3306.**
 
    Which variable goes where, from the service's **Variables** tab:
 
-   | Railway variable | Use it for |
-   | --- | --- |
-   | `RAILWAY_TCP_PROXY_DOMAIN` | `DB_HOST` |
-   | `RAILWAY_TCP_PROXY_PORT`   | `DB_PORT` |
-   | `MYSQLDATABASE` (`railway`) | `DB_NAME` |
-   | `MYSQLPASSWORD`            | `DB_PASSWORD` |
-   | `MYSQLHOST`                | **nothing - private network** |
-   | `MYSQLPORT` (`3306`)       | **nothing - private port** |
+   | Railway variable            | Use it for                    |
+   | --------------------------- | ----------------------------- |
+   | `RAILWAY_TCP_PROXY_DOMAIN`  | `DB_HOST`                     |
+   | `RAILWAY_TCP_PROXY_PORT`    | `DB_PORT`                     |
+   | `MYSQLDATABASE` (`railway`) | `DB_NAME`                     |
+   | `MYSQLPASSWORD`             | `DB_PASSWORD`                 |
+   | `MYSQLHOST`                 | **nothing - private network** |
+   | `MYSQLPORT` (`3306`)        | **nothing - private port**    |
 
    `MYSQLHOST` and `MYSQLPORT` look like the obvious choices and are the wrong
    ones. If your port is 3306, you copied the internal value.
@@ -83,15 +83,15 @@ necessary.
    Everything you need is also in `MYSQL_PUBLIC_URL`, in one line:
 
    ```
-   mysql://USER:PASSWORD@HOST:PORT/DATABASE
+   mysql://root:nXlFCFTPkPdYBPPxHCStnTiuCcnmzvfC@switchback.proxy.rlwy.net:10898/railway
    ```
 
 3. Confirm the credentials work **before** involving Vercel:
 
 ```bash
 cd ecommerce-backend
-DB_HOST=<proxy-host> DB_PORT=<proxy-port> DB_NAME=railway \
-DB_USER=root DB_PASSWORD=<root-password> \
+DB_HOST=switchback.proxy.rlwy.net DB_PORT=10898 DB_NAME=railway \
+DB_USER=root DB_PASSWORD=nXlFCFTPkPdYBPPxHCStnTiuCcnmzvfC \
 DB_SSL=true DB_SSL_REJECT_UNAUTHORIZED=false \
 node test-db.mjs
 ```
@@ -102,7 +102,7 @@ which Vercel will not - there you get only `FUNCTION_INVOCATION_FAILED`.
 4. Apply the migrations as root, from the `database/` folder:
 
 ```bash
-MYSQL="mysql -h <proxy-host> -P <proxy-port> -u root -p<root-password> railway"
+MYSQL="mysql -h switchback.proxy.rlwy.net -P 10898 -u root -p nXlFCFTPkPdYBPPxHCStnTiuCcnmzvfC railway"
 
 $MYSQL < 01-schema.sql
 $MYSQL < 03-add-social-login.sql
@@ -155,8 +155,8 @@ git status --porcelain | grep -i env          # only .example files
 git log --all --name-only | grep -c ".env$"   # should print 0
 ```
 
-   If `.env` was ever committed, adding it to `.gitignore` now does **not**
-   remove it from history. Rotate every secret in it.
+If `.env` was ever committed, adding it to `.gitignore` now does **not**
+remove it from history. Rotate every secret in it.
 
 2. Import the repository in Vercel. Leave the framework preset alone -
    `vercel.json` specifies the build. **Set the root directory to the repository
