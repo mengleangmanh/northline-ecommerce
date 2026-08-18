@@ -34,7 +34,9 @@ export function socialLoginUrl(provider, redirectTo = '/') {
   // OAuth requires a full page navigation to the backend. The Vite dev proxy
   // only intercepts fetch/XHR, so a relative /api path would 404 during a real
   // browser redirect. In development we must point directly at the backend.
-  const base = (import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:5000/api' : '/api')).replace(/\/+$/, '')
+  const raw = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:5000/api' : '/api')
+  const trimmed = raw.trim().replace(/\/+$/, '')
+  const base = trimmed.endsWith('/api') ? trimmed : `${trimmed}/api`
   return `${base}/auth/${provider}?redirect=${encodeURIComponent(redirectTo)}`
 }
 

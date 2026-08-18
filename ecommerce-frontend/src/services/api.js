@@ -1,9 +1,16 @@
 import axios from 'axios'
 
+function getBaseUrl() {
+  const envUrl = import.meta.env.VITE_API_URL
+  if (!envUrl) return '/api'
+  const trimmed = envUrl.trim().replace(/\/+$/, '')
+  return trimmed.endsWith('/api') ? trimmed : `${trimmed}/api`
+}
+
 // One axios instance for the whole app. Import this everywhere instead of
 // calling axios directly, so the base URL and the token live in one place.
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || '/api',
+  baseURL: getBaseUrl(),
   headers: { 'Content-Type': 'application/json' },
 })
 
